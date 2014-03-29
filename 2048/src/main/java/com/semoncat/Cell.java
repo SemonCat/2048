@@ -1,4 +1,4 @@
-package com.tpcstld.twozerogame;
+package com.semoncat;
 
 public class Cell {
     private int x;

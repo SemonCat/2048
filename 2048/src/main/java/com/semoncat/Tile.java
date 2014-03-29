@@ -1,4 +1,4 @@
-package com.tpcstld.twozerogame;
+package com.semoncat;
 
 public class Tile extends Cell {
     private int value;

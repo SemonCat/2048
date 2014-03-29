@@ -1,4 +1,4 @@
-package com.tpcstld.twozerogame;
+package com.semoncat;
 
 import android.content.Context;
 import android.content.SharedPreferences;

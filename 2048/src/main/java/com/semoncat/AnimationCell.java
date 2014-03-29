@@ -1,4 +1,4 @@
-package com.tpcstld.twozerogame;
+package com.semoncat;
 
 public class AnimationCell extends Cell {
     private int animationType;

@@ -1,14 +1,18 @@
-package com.tpcstld.twozerogame;
+package com.semoncat;
+
 
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.Window;
+import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class MainActivity extends ActionBarActivity {
+/**
+ * Created by SemonCat on 2014/3/29.
+ */
+public class MainFragment extends Fragment{
 
     MainView view;
     final String WIDTH = "width";
@@ -17,13 +21,18 @@ public class MainActivity extends ActionBarActivity {
     final String HIGH_SCORE = "high score";
     final String WON = "won";
     final String LOSE = "lose";
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        view = new MainView(getBaseContext());
 
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = new MainView(getActivity());
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity());
         view.hasSaveState = settings.getBoolean("save_state", false);
 
         if (savedInstanceState != null) {
@@ -45,17 +54,8 @@ public class MainActivity extends ActionBarActivity {
             view.game.won = savedInstanceState.getBoolean(WON);
             view.game.lose = savedInstanceState.getBoolean(LOSE);
         }
-        setContentView(view);
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return true;
+        return view;
     }
 
     @Override
@@ -80,10 +80,13 @@ public class MainActivity extends ActionBarActivity {
         savedInstanceState.putBoolean(LOSE, view.game.lose);
     }
 
-    protected void onPause() {
+
+
+    @Override
+    public void onPause() {
         super.onPause();
 
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity());
         SharedPreferences.Editor editor = settings.edit();
         Tile[][] field = view.game.grid.field;
         editor.putInt(WIDTH, field.length);
@@ -104,13 +107,14 @@ public class MainActivity extends ActionBarActivity {
         editor.commit();
     }
 
-    protected void onResume() {
+    @Override
+    public void onResume() {
         super.onResume();
 
         //Stopping all animations
         view.game.aGrid.cancelAnimations();
 
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity());
         for (int xx = 0; xx < view.game.grid.field.length; xx++) {
             for (int yy = 0; yy < view.game.grid.field[0].length; yy++) {
                 int value = settings.getInt(xx + " " + yy, -1);

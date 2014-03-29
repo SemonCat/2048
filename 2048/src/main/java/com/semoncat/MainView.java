@@ -1,4 +1,4 @@
-package com.tpcstld.twozerogame;
+package com.semoncat;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -28,7 +28,7 @@ public class MainView extends View {
     int boardMiddleY = 0;
     Drawable backgroundRectangle;
     Drawable[] cellRectangle = new Drawable[12];
-    BitmapDrawable[] bitmapCell= new BitmapDrawable[12];
+    BitmapDrawable[] bitmapCell = new BitmapDrawable[12];
     Drawable settingsIcon;
     Drawable lightUpRectangle;
     Drawable fadeRectangle;
@@ -95,7 +95,7 @@ public class MainView extends View {
         if (game.aGrid.isAnimationActive()) {
             invalidate(startingX, startingY, endingX, endingY);
             tick();
-        //Refresh one last time on game end.
+            //Refresh one last time on game end.
         } else if ((game.won || game.lose) && refreshLastTime) {
             invalidate();
             refreshLastTime = false;
@@ -225,7 +225,7 @@ public class MainView extends View {
                 int sY = startingY + gridWidth + (cellSize + gridWidth) * yy;
                 int eY = sY + cellSize;
 
-                Tile currentTile = game.grid.getCellContent(xx,yy);
+                Tile currentTile = game.grid.getCellContent(xx, yy);
                 if (currentTile != null) {
                     //Get and represent the value of the tile
                     int value = currentTile.getValue();
@@ -259,7 +259,7 @@ public class MainView extends View {
                             paint.setTextSize(textSize * textScaleSize);
 
                             float cellScaleSize = cellSize / 2 * (1 - textScaleSize);
-                            bitmapCell[index].setBounds( (int) (sX + cellScaleSize), (int) (sY + cellScaleSize), (int) (eX - cellScaleSize), (int) (eY - cellScaleSize));
+                            bitmapCell[index].setBounds((int) (sX + cellScaleSize), (int) (sY + cellScaleSize), (int) (eX - cellScaleSize), (int) (eY - cellScaleSize));
                             bitmapCell[index].draw(canvas);
                         } else if (aCell.getAnimationType() == MainGame.MOVE_ANIMATION) {  // Moving animation
                             double percentDone = aCell.getPercentageDone();
@@ -301,7 +301,7 @@ public class MainView extends View {
         // Displaying game over
         if (game.won) {
             lightUpRectangle.setAlpha((int) (127 * alphaChange));
-            drawDrawable(canvas, lightUpRectangle ,startingX, startingY, endingX, endingY);
+            drawDrawable(canvas, lightUpRectangle, startingX, startingY, endingX, endingY);
             lightUpRectangle.setAlpha(255);
             paint.setColor(TEXT_WHITE);
             paint.setAlpha((int) (255 * alphaChange));
@@ -341,7 +341,7 @@ public class MainView extends View {
             Bitmap bitmap = Bitmap.createBitmap(cellSize, cellSize, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
             drawDrawable(canvas, cellRectangle[xx], 0, 0, cellSize, cellSize);
-            drawCellText(canvas, (int) Math.pow(2, xx) , 0, 0);
+            drawCellText(canvas, (int) Math.pow(2, xx), 0, 0);
             bitmapCell[xx] = new BitmapDrawable(resources, bitmap);
         }
     }
@@ -356,8 +356,8 @@ public class MainView extends View {
         lastFPSTime = System.nanoTime();
     }
 
-    public static int log2(int n){
-        if(n <= 0) throw new IllegalArgumentException();
+    public static int log2(int n) {
+        if (n <= 0) throw new IllegalArgumentException();
         return 31 - Integer.numberOfLeadingZeros(n);
     }
 
@@ -367,7 +367,7 @@ public class MainView extends View {
         screenMiddleX = width / 2;
         screenMiddleY = height / 2;
         boardMiddleX = screenMiddleX;
-        boardMiddleY = screenMiddleY  + cellSize / 2;
+        boardMiddleY = screenMiddleY + cellSize / 2;
         iconSize = cellSize / 2;
 
         paint.setTextAlign(Paint.Align.CENTER);
@@ -420,17 +420,17 @@ public class MainView extends View {
         //Loading resources
         game = new MainGame(context, this);
         try {
-            backgroundRectangle =  resources.getDrawable(R.drawable.background_rectangle);
-            cellRectangle[0] =  resources.getDrawable(R.drawable.cell_rectangle);
-            cellRectangle[1] =  resources.getDrawable(R.drawable.cell_rectangle_2);
-            cellRectangle[2] =  resources.getDrawable(R.drawable.cell_rectangle_4);
-            cellRectangle[3] =  resources.getDrawable(R.drawable.cell_rectangle_8);
-            cellRectangle[4] =  resources.getDrawable(R.drawable.cell_rectangle_16);
-            cellRectangle[5] =  resources.getDrawable(R.drawable.cell_rectangle_32);
-            cellRectangle[6] =  resources.getDrawable(R.drawable.cell_rectangle_64);
-            cellRectangle[7] =  resources.getDrawable(R.drawable.cell_rectangle_128);
-            cellRectangle[8] =  resources.getDrawable(R.drawable.cell_rectangle_256);
-            cellRectangle[9] =  resources.getDrawable(R.drawable.cell_rectangle_512);
+            backgroundRectangle = resources.getDrawable(R.drawable.background_rectangle);
+            cellRectangle[0] = resources.getDrawable(R.drawable.cell_rectangle);
+            cellRectangle[1] = resources.getDrawable(R.drawable.cell_rectangle_2);
+            cellRectangle[2] = resources.getDrawable(R.drawable.cell_rectangle_4);
+            cellRectangle[3] = resources.getDrawable(R.drawable.cell_rectangle_8);
+            cellRectangle[4] = resources.getDrawable(R.drawable.cell_rectangle_16);
+            cellRectangle[5] = resources.getDrawable(R.drawable.cell_rectangle_32);
+            cellRectangle[6] = resources.getDrawable(R.drawable.cell_rectangle_64);
+            cellRectangle[7] = resources.getDrawable(R.drawable.cell_rectangle_128);
+            cellRectangle[8] = resources.getDrawable(R.drawable.cell_rectangle_256);
+            cellRectangle[9] = resources.getDrawable(R.drawable.cell_rectangle_512);
             cellRectangle[10] = resources.getDrawable(R.drawable.cell_rectangle_1024);
             cellRectangle[11] = resources.getDrawable(R.drawable.cell_rectangle_2048);
             settingsIcon = resources.getDrawable(R.drawable.ic_action_refresh);
