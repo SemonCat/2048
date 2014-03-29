@@ -109,6 +109,10 @@ public class MainGame {
         tile.updatePosition(cell);
     }
 
+    /**
+     * move cell.
+     * @param direction 0: up, 1: right, 2: down, 3: left
+     */
     public void move (int direction) {
         aGrid.cancelAnimations();
         // 0: up, 1: right, 2: down, 3: left

@@ -1,4 +1,4 @@
-package com.semoncat;
+package com.semoncat.Input;
 
 import android.view.MotionEvent;
 import android.view.View;
@@ -122,5 +122,6 @@ public class InputListener implements View.OnTouchListener {
     public boolean inRange(float left, float check, float right) {
         return (left <= check && check <= right);
     }
+
 
 }

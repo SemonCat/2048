@@ -11,7 +11,8 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 
 import com.semoncat.Bean.Tile;
-import com.semoncat.InputListener;
+import com.semoncat.Input.GestureListener;
+import com.semoncat.Input.InputListener;
 import com.semoncat.Bean.MainGame;
 import com.semoncat.R;
 
@@ -450,7 +451,7 @@ public class MainView extends View {
         } catch (Exception e) {
             System.out.println("Error getting assets?");
         }
-        setOnTouchListener(new InputListener(this));
+        setOnTouchListener(new GestureListener(this));
         game.newGame();
     }
 
