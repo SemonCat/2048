@@ -155,7 +155,7 @@ public class MainView extends View {
         backgroundRectangle.draw(canvas);
         paint.setTextSize(titleTextSize);
         paint.setColor(TEXT_BROWN);
-        canvas.drawText("HIGH SCORE", sXHighScore + textMiddleHighScore, titleStartYAll, paint);
+        canvas.drawText(getResources().getString(R.string.high_score), sXHighScore + textMiddleHighScore, titleStartYAll, paint);
         paint.setTextSize(bodyTextSize);
         paint.setColor(TEXT_WHITE);
         canvas.drawText("" + game.highScore, sXHighScore + textMiddleHighScore, bodyStartYAll, paint);
@@ -166,7 +166,7 @@ public class MainView extends View {
         backgroundRectangle.draw(canvas);
         paint.setTextSize(titleTextSize);
         paint.setColor(TEXT_BROWN);
-        canvas.drawText("SCORE", sXScore + textMiddleScore, titleStartYAll, paint);
+        canvas.drawText(getResources().getString(R.string.score), sXScore + textMiddleScore, titleStartYAll, paint);
         paint.setTextSize(bodyTextSize);
         paint.setColor(TEXT_WHITE);
         canvas.drawText("" + game.score, sXScore + textMiddleScore, bodyStartYAll, paint);
@@ -189,7 +189,7 @@ public class MainView extends View {
         paint.setTextAlign(Paint.Align.LEFT);
         int textShiftY = centerText() * 2;
         int headerStartY = sYAll - textShiftY;
-        canvas.drawText("2048", startingX, headerStartY, paint);
+        canvas.drawText(getResources().getString(R.string.titleHeader), startingX, headerStartY, paint);
     }
 
     public void drawInstructions(Canvas canvas) {
@@ -197,7 +197,7 @@ public class MainView extends View {
         paint.setTextSize(instructionsTextSize);
         paint.setTextAlign(Paint.Align.LEFT);
         int textShiftY = centerText() * 2;
-        canvas.drawText("Swipe to move. 2+2 = 4. Reach 2048.",
+        canvas.drawText(getResources().getString(R.string.instructions),
                 startingX, endingY - textShiftY + textPaddingSize, paint);
     }
 

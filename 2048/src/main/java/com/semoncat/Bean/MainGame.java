@@ -152,11 +152,14 @@ public class MainGame {
                         score = score + merged.getValue();
                         highScore = Math.max(score, highScore);
 
+                        //Make Game Keep Play.
+                        /*
                         // The mighty 2048 tile
                         if (merged.getValue() == 2048) {
                             won = true;
                             endGame();
                         }
+                        */
                     } else {
                         moveTile(tile, positions[0]);
                         int[] extras = {xx, yy, 0};
