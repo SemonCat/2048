@@ -1,4 +1,4 @@
-package com.semoncat;
+package com.semoncat.Bean;
 
 import java.util.ArrayList;
 

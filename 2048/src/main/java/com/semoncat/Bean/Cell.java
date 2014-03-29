@@ -1,4 +1,4 @@
-package com.semoncat;
+package com.semoncat.Bean;
 
 public class Cell {
     private int x;

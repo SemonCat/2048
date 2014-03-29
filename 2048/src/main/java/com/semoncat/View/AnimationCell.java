@@ -1,4 +1,6 @@
-package com.semoncat;
+package com.semoncat.View;
+
+import com.semoncat.Bean.Cell;
 
 public class AnimationCell extends Cell {
     private int animationType;

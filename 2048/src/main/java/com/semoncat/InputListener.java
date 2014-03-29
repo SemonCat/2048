@@ -3,6 +3,8 @@ package com.semoncat;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.semoncat.View.MainView;
+
 public class InputListener implements View.OnTouchListener {
 
     private static final int SWIPE_MIN_DISTANCE = 0;

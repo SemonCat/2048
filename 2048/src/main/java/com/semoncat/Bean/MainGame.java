@@ -1,8 +1,14 @@
-package com.semoncat;
+package com.semoncat.Bean;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
+import com.semoncat.Bean.Cell;
+import com.semoncat.Bean.Grid;
+import com.semoncat.Bean.Tile;
+import com.semoncat.View.AnimationGrid;
+import com.semoncat.View.MainView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,24 +18,24 @@ public class MainGame {
 
     public Grid grid;
     public AnimationGrid aGrid;
-    final int numSquaresX = 4;
-    final int numSquaresY = 4;
-    final int startTiles = 2;
+    public final int numSquaresX = 4;
+    public final int numSquaresY = 4;
+    public final int startTiles = 2;
 
-    long score = 0;
-    long highScore = 0;
-    boolean won = false;
-    boolean lose = false;
+    public long score = 0;
+    public long highScore = 0;
+    public boolean won = false;
+    public boolean lose = false;
 
     Context mContext;
 
     MainView mView;
 
-    static final int SPAWN_ANIMATION = -1;
-    static final int MOVE_ANIMATION = 0;
-    static final int MERGE_ANIMATION = 1;
+    public static final int SPAWN_ANIMATION = -1;
+    public static final int MOVE_ANIMATION = 0;
+    public static final int MERGE_ANIMATION = 1;
 
-    static final int FADE_GLOBAL_ANIMATION = 0;
+    public static final int FADE_GLOBAL_ANIMATION = 0;
 
     static final long MOVE_ANIMATION_TIME = MainView.BASE_ANIMATION_TIME;
     static final long SPAWN_ANIMATION_TIME = MainView.BASE_ANIMATION_TIME;

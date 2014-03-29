@@ -1,4 +1,4 @@
-package com.semoncat;
+package com.semoncat.View;
 
 import java.util.ArrayList;
 

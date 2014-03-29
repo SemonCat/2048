@@ -1,4 +1,4 @@
-package com.semoncat;
+package com.semoncat.View;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -9,6 +9,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+
+import com.semoncat.Bean.Tile;
+import com.semoncat.InputListener;
+import com.semoncat.Bean.MainGame;
+import com.semoncat.R;
 
 import java.util.ArrayList;
 
@@ -53,10 +58,10 @@ public class MainView extends View {
     int titleWidthHighScore;
     int titleWidthScore;
 
-    static int sYIcons;
-    static int sXNewGame;
+    public static int sYIcons;
+    public static int sXNewGame;
 
-    static int iconSize;
+    public static int iconSize;
     long lastFPSTime = System.nanoTime();
     long currentTime = System.nanoTime();
 
@@ -66,14 +71,14 @@ public class MainView extends View {
     float instructionsTextSize;
     float gameOverTextSize;
 
-    boolean refreshLastTime = true;
+    public boolean refreshLastTime = true;
 
-    static final int BASE_ANIMATION_TIME = 100000000;
-    static int textPaddingSize = 0;
-    static int iconPaddingSize = 0;
+    public static final int BASE_ANIMATION_TIME = 100000000;
+    public static int textPaddingSize = 0;
+    public static int iconPaddingSize = 0;
 
-    static final float MERGING_ACCELERATION = (float) -0.5;
-    static final float INITIAL_VELOCITY = (1 - MERGING_ACCELERATION) / 4;
+    public static final float MERGING_ACCELERATION = (float) -0.5;
+    public static final float INITIAL_VELOCITY = (1 - MERGING_ACCELERATION) / 4;
 
     @Override
     public void onDraw(Canvas canvas) {

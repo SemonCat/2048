@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.semoncat.Bean.Tile;
+import com.semoncat.View.MainView;
+
 /**
  * Created by SemonCat on 2014/3/29.
  */
