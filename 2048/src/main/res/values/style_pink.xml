@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="Theme.Pink" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="actionBarStyle">@style/PinkActionBar</item>
+    </style>
+
+    <style name="PinkActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/actionBarBackground</item>
+    </style>
+
+    <drawable name="actionBarBackground">@drawable/ab_solid_pink</drawable>
+</resources>
