@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.semoncat.u2048.Fragment.ThemeSwitchDialog;
 import com.semoncat.u2048.R;
 
 public class MainActivity extends BaseActivity {
@@ -87,7 +88,10 @@ public class MainActivity extends BaseActivity {
     }
 
     public void switchTheme(View mView){
+
         mDrawerLayout.closeDrawers();
+        new ThemeSwitchDialog().show(getSupportFragmentManager(),null);
+
     }
 
     @Override

@@ -9,4 +9,13 @@
     <string name="game_over">遊戲結束：（</string>
     <string name="game_win">勝利！</string>
 
+    <!-- Drawer -->
+    <string name="drawer_theme">主題</string>
+
+    <!-- Dialog -->
+    <string name="chose_theme">選擇一個主題！</string>
+
+    <!-- Theme -->
+    <string name="theme_base">預設</string>
+    <string name="theme_pink">粉紅</string>
 </resources>

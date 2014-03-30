@@ -12,4 +12,11 @@
     <!-- Drawer -->
     <string name="drawer_theme">Theme</string>
 
+    <!-- Dialog -->
+    <string name="chose_theme">Theme Picker</string>
+
+    <!-- Theme -->
+    <string name="theme_base">Default</string>
+    <string name="theme_pink">Pink</string>
+
 </resources>
