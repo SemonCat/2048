@@ -82,8 +82,8 @@ public class MainActivity extends BaseActivity {
         //打開 Up Button 的點擊功能
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        View DrawContent = findViewById(R.id.drawer_content);
-        DrawContent.setPadding(0,getActionBarHeight()+getStatusBarHeight(),0,0);
+        //View DrawContent = findViewById(R.id.drawer_content);
+        //DrawContent.setPadding(0,getActionBarHeight()+getStatusBarHeight(),0,0);
 
     }
 

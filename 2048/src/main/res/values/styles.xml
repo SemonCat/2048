@@ -1,5 +1,5 @@
 <resources>
 
     <attr name="actionBarBackground" format="reference"/>
-
+    <attr name="u2048_content_array" format="reference"/>
 </resources>

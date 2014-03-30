@@ -2,9 +2,9 @@
 <resources>
 
     <style name="Theme.Base" parent="@style/Theme.AppCompat.Light.DarkActionBar">
-
+        <item name="u2048_content_array">@array/base</item>
         <item name="android:actionBarStyle">@style/BaseActionBar</item>
-        <item name="actionBarBackground">@android:color/black</item>
+        <item name="actionBarBackground">@drawable/ab_solid_holo</item>
     </style>
 
     <style name="BaseActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">

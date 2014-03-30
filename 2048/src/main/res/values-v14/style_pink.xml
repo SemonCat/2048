@@ -3,6 +3,7 @@
 
 
     <style name="Theme.Pink" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="u2048_content_array">@array/base</item>
         <item name="android:actionBarStyle">@style/PinkActionBar</item>
         <item name="actionBarBackground">@drawable/ab_solid_pink</item>
     </style>

@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.semoncat.u2048.Bean.Tile;
@@ -35,6 +36,7 @@ public class MainView extends View {
     Drawable backgroundRectangle;
     Drawable[] cellRectangle;
     BitmapDrawable[] bitmapCell;
+    String[] valueArray;
     Drawable settingsIcon;
     Drawable lightUpRectangle;
     Drawable fadeRectangle;
@@ -121,14 +123,14 @@ public class MainView extends View {
         draw.draw(canvas);
     }
 
-    public void drawCellText(Canvas canvas, int value, int sX, int sY) {
+    public void drawCellText(Canvas canvas, int index, int sX, int sY) {
         int textShiftY = centerText();
-        if (value >= 8) {
+        if (index >= 2) {
             paint.setColor(TEXT_WHITE);
         } else {
             paint.setColor(TEXT_BLACK);
         }
-        canvas.drawText(String.valueOf(value), sX + cellSize / 2, sY + cellSize / 2 - textShiftY, paint);
+        canvas.drawText(valueArray[index], sX + cellSize / 2, sY + cellSize / 2 - textShiftY, paint);
     }
 
     public void drawScoreText(Canvas canvas) {
@@ -355,7 +357,10 @@ public class MainView extends View {
             Bitmap bitmap = Bitmap.createBitmap(cellSize, cellSize, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
             drawDrawable(canvas, cellRectangle[xx], 0, 0, cellSize, cellSize);
-            drawCellText(canvas, (int) Math.pow(2, xx), 0, 0);
+            //drawCellText(canvas, (int) Math.pow(2, xx), 0, 0);
+            if (xx!=0){
+                drawCellText(canvas, xx-1, 0, 0);
+            }
             bitmapCell[xx] = new BitmapDrawable(resources, bitmap);
         }
     }
@@ -434,6 +439,24 @@ public class MainView extends View {
         //Loading resources
         game = new MainGame(context, this);
         try {
+
+            valueArray = new String[]{
+                    "2","4","8","16","32","64","128","256",
+                    "512","1024","2048","4096","8192"};
+
+            TypedValue a = new TypedValue();
+            if (context.getTheme()!=null){
+                context.getTheme().resolveAttribute(R.attr.u2048_content_array, a, true);
+
+                try{
+                    valueArray = resources.getStringArray(a.resourceId);
+                }catch (Resources.NotFoundException mNotFoundException){
+
+                }
+            }
+
+
+
             backgroundRectangle = resources.getDrawable(R.drawable.background_rectangle);
             cellRectangle = new Drawable[]{
                     resources.getDrawable(R.drawable.cell_rectangle),
@@ -460,8 +483,9 @@ public class MainView extends View {
             this.setBackgroundColor(resources.getColor(R.color.background));
             Typeface font = Typeface.createFromAsset(resources.getAssets(), "ClearSans-Bold.ttf");
             paint.setTypeface(font);
-        } catch (Exception e) {
-            System.out.println("Error getting assets?");
+        } catch (AssertionError e) {
+
+
         }
         setOnTouchListener(new GestureListener(this));
         game.newGame();
