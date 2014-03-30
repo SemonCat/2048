@@ -1,12 +1,10 @@
-package com.semoncat;
+package com.semoncat.u2048;
 
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
-
-import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 /**
  * Created by SemonCat on 2014/3/30.

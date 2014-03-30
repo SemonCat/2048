@@ -1,6 +1,6 @@
-package com.semoncat.View;
+package com.semoncat.u2048.View;
 
-import com.semoncat.Bean.Cell;
+import com.semoncat.u2048.Bean.Cell;
 
 public class AnimationCell extends Cell {
     private int animationType;

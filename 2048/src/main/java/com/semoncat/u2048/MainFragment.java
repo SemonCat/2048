@@ -1,4 +1,4 @@
-package com.semoncat;
+package com.semoncat.u2048;
 
 
 import android.content.SharedPreferences;
@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.semoncat.Bean.Tile;
-import com.semoncat.View.MainView;
+import com.semoncat.u2048.Bean.Tile;
+import com.semoncat.u2048.View.MainView;
 
 /**
  * Created by SemonCat on 2014/3/29.

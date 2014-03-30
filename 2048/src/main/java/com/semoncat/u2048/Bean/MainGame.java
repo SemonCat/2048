@@ -1,14 +1,14 @@
-package com.semoncat.Bean;
+package com.semoncat.u2048.Bean;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.semoncat.Bean.Cell;
-import com.semoncat.Bean.Grid;
-import com.semoncat.Bean.Tile;
-import com.semoncat.View.AnimationGrid;
-import com.semoncat.View.MainView;
+import com.semoncat.u2048.Bean.Cell;
+import com.semoncat.u2048.Bean.Grid;
+import com.semoncat.u2048.Bean.Tile;
+import com.semoncat.u2048.View.AnimationGrid;
+import com.semoncat.u2048.View.MainView;
 
 import java.util.ArrayList;
 import java.util.Collections;

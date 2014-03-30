@@ -1,4 +1,4 @@
-package com.semoncat.Bean;
+package com.semoncat.u2048.Bean;
 
 public class Tile extends Cell {
     private int value;

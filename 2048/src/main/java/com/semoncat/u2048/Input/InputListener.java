@@ -1,9 +1,9 @@
-package com.semoncat.Input;
+package com.semoncat.u2048.Input;
 
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.semoncat.View.MainView;
+import com.semoncat.u2048.View.MainView;
 
 public class InputListener implements View.OnTouchListener {
 

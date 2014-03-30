@@ -1,4 +1,4 @@
-package com.semoncat.View;
+package com.semoncat.u2048.View;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.semoncat.View;
+package com.semoncat.u2048.View;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -10,11 +10,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import com.semoncat.Bean.Tile;
-import com.semoncat.Input.GestureListener;
-import com.semoncat.Input.InputListener;
-import com.semoncat.Bean.MainGame;
-import com.semoncat.R;
+import com.semoncat.u2048.Bean.Tile;
+import com.semoncat.u2048.Input.GestureListener;
+import com.semoncat.u2048.Input.InputListener;
+import com.semoncat.u2048.Bean.MainGame;
+import com.semoncat.u2048.R;
 
 import java.util.ArrayList;
 
