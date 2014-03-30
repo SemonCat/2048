@@ -45,8 +45,16 @@ public class MainActivity extends ActionBarActivity {
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         tintManager.setNavigationBarTintEnabled(true);
         tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.drawable.actionBarBackground);
-        tintManager.setNavigationBarTintResource(R.drawable.actionBarBackground);
+
+
+        TypedValue a = new TypedValue();
+        if (getTheme()!=null){
+            getTheme().resolveAttribute(R.attr.actionBarBackground, a, true);
+
+            tintManager.setStatusBarTintResource(a.resourceId);
+            tintManager.setNavigationBarTintResource(a.resourceId);
+        }
+
 
 
     }

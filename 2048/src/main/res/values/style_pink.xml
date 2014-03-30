@@ -4,11 +4,11 @@
 
     <style name="Theme.Pink" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="actionBarStyle">@style/PinkActionBar</item>
+        <item name="actionBarBackground">@drawable/ab_solid_pink</item>
     </style>
 
     <style name="PinkActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@drawable/actionBarBackground</item>
+        <item name="android:background">?attr/actionBarBackground</item>
     </style>
 
-    <drawable name="actionBarBackground">@drawable/ab_solid_pink</drawable>
 </resources>
