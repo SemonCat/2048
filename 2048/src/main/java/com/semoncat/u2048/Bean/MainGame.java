@@ -15,6 +15,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainGame {
+    public interface GameEventListener{
+        void OnGameStart();
+        void OnScoreChange(long score);
+        void OnHighScoreChange(long score);
+        void OnGameOver();
+    }
+
+    private GameEventListener mListener;
 
     public Grid grid;
     public AnimationGrid aGrid;
@@ -49,6 +57,8 @@ public class MainGame {
     }
 
     public void newGame() {
+
+
         grid = new Grid(numSquaresX, numSquaresY);
         aGrid = new AnimationGrid(numSquaresX, numSquaresY);
         highScore = getHighScore();
@@ -63,6 +73,9 @@ public class MainGame {
         mView.refreshLastTime = true;
         mView.resyncTime();
         mView.postInvalidate();
+
+        if (mListener!=null)
+            mListener.OnGameStart();
     }
 
     public void addStartTiles() {
@@ -156,14 +169,17 @@ public class MainGame {
                         score = score + merged.getValue();
                         highScore = Math.max(score, highScore);
 
-                        //Make Game Keep Play.
-                        /*
-                        // The mighty 2048 tile
-                        if (merged.getValue() == 2048) {
+                        if (mListener!=null) {
+                            mListener.OnScoreChange(score);
+                            mListener.OnHighScoreChange(highScore);
+                        }
+
+                        // The mighty 8192 tile
+                        if (merged.getValue() == 8192) {
                             won = true;
                             endGame();
                         }
-                        */
+
                     } else {
                         moveTile(tile, positions[0]);
                         int[] extras = {xx, yy, 0};
@@ -196,6 +212,9 @@ public class MainGame {
             highScore = score;
             recordHighScore();
         }
+
+        if (mListener!=null)
+            mListener.OnGameOver();
     }
 
     public Cell getVector(int direction) {
@@ -276,5 +295,9 @@ public class MainGame {
 
     public boolean positionsEqual(Cell first, Cell second) {
         return first.getX() == second.getX() && first.getY() == second.getY();
+    }
+
+    public void setListener(GameEventListener mListener) {
+        this.mListener = mListener;
     }
 }
