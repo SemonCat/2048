@@ -19,5 +19,7 @@
     <string name="theme_base">Default</string>
     <string name="theme_pink">Pink</string>
     <string name="theme_dynasty">Chinese Dynasty</string>
-    <string name="theme_zodiac">Zodiac</string>
+    <string name="theme_zodiac">Chinese Zodiac</string>
+    <string name="theme_periodic">Periodic Table</string>
+
 </resources>

@@ -49,4 +49,21 @@
         <item>神</item>
     </string-array>
 
+    <string-array name="periodic">
+        <item>H</item>
+        <item>Li</item>
+        <item>Na</item>
+        <item>K</item>
+        <item>Rb</item>
+        <item>Cs</item>
+        <item>Fr</item>
+        <item>Be</item>
+        <item>Mg</item>
+        <item>Ca</item>
+        <item>Sr</item>
+        <item>Ba</item>
+        <item>Ra</item>
+    </string-array>
+
+
 </resources>

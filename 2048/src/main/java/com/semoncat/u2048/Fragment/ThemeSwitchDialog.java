@@ -32,13 +32,15 @@ public class ThemeSwitchDialog extends DialogFragment implements DialogInterface
             new int[]{R.string.theme_base,
                     R.string.theme_pink,
                     R.string.theme_dynasty,
-                    R.string.theme_zodiac};
+                    R.string.theme_zodiac,
+                    R.string.theme_periodic};
 
     private static final int[] ThemeResourceIds =
             new int[]{R.style.Theme_Base,
                     R.style.Theme_Pink,
                     R.style.Theme_Dynasty,
-                    R.style.Theme_Zodiac};
+                    R.style.Theme_Zodiac,
+                    R.style.Theme_Periodic};
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
