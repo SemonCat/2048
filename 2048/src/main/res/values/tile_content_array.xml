@@ -32,4 +32,21 @@
         <item>PRC2</item>
         <item>PRC3</item>
     </string-array>
+
+    <string-array name="zodiac">
+        <item>鼠</item>
+        <item>牛</item>
+        <item>虎</item>
+        <item>兔</item>
+        <item>龍</item>
+        <item>蛇</item>
+        <item>馬</item>
+        <item>羊</item>
+        <item>猴</item>
+        <item>雞</item>
+        <item>狗</item>
+        <item>豬</item>
+        <item>神</item>
+    </string-array>
+
 </resources>

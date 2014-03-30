@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Zodiac" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="u2048_content_array">@array/zodiac</item>
+        <item name="android:actionBarStyle">@style/ZodiacActionBar</item>
+        <item name="actionBarBackground">@drawable/ab_solid_zodiac</item>
+    </style>
+
+    <style name="ZodiacActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">?attr/actionBarBackground</item>
+
+    </style>
+
+</resources>
