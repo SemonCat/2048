@@ -313,7 +313,7 @@ public class MainView extends View {
             paint.setAlpha((int) (255 * alphaChange));
             paint.setTextSize(gameOverTextSize);
             paint.setTextAlign(Paint.Align.CENTER);
-            canvas.drawText("You Win!", boardMiddleX, boardMiddleY - centerText(), paint);
+            canvas.drawText(getResources().getString(R.string.game_win), boardMiddleX, boardMiddleY - centerText(), paint);
             paint.setAlpha(255);
         } else if (game.lose) {
             fadeRectangle.setAlpha((int) (127 * alphaChange));
@@ -323,7 +323,7 @@ public class MainView extends View {
             paint.setAlpha((int) (255 * alphaChange));
             paint.setTextSize(gameOverTextSize);
             paint.setTextAlign(Paint.Align.CENTER);
-            canvas.drawText("Game Over!", boardMiddleX, boardMiddleY - centerText(), paint);
+            canvas.drawText(getResources().getString(R.string.game_over), boardMiddleX, boardMiddleY - centerText(), paint);
             paint.setAlpha(255);
         }
     }

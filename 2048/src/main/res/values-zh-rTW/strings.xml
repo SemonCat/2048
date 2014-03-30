@@ -6,5 +6,7 @@
     <string name="high_score">最高分數</string>
     <string name="score">分數</string>
     <string name="instructions">滑動你的手指！ 2 + 2 = 4。</string>
+    <string name="game_over">遊戲結束：（</string>
+    <string name="game_win">勝利！</string>
 
 </resources>
