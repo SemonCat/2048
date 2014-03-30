@@ -16,4 +16,20 @@
         <item>4096</item>
         <item>8192</item>
     </string-array>
+
+    <string-array name="dynasty">
+        <item>商</item>
+        <item>周</item>
+        <item>秦</item>
+        <item>漢</item>
+        <item>唐</item>
+        <item>宋</item>
+        <item>元</item>
+        <item>明</item>
+        <item>清</item>
+        <item>ROC</item>
+        <item>PRC</item>
+        <item>PRC2</item>
+        <item>PRC3</item>
+    </string-array>
 </resources>

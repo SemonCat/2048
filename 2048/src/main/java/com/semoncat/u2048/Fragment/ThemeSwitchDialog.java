@@ -13,6 +13,10 @@ import android.support.v4.app.DialogFragment;
 import com.semoncat.u2048.MainActivity;
 import com.semoncat.u2048.R;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by SemonCat on 2014/3/30.
  */
@@ -20,17 +24,28 @@ public class ThemeSwitchDialog extends DialogFragment implements DialogInterface
 
     public static final String USER_THEME = "user_theme";
 
+
+
     private String[] Themes;
+
+    private static final int[] ThemeNameResourceIds =
+            new int[]{R.string.theme_base,
+                    R.string.theme_pink,
+                    R.string.theme_dynasty};
 
     private static final int[] ThemeResourceIds =
             new int[]{R.style.Theme_Base,
-                    R.style.Theme_Pink};
+                    R.style.Theme_Pink,
+                    R.style.Theme_Dynasty};
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Themes = new String[]{
-                getResources().getString(R.string.theme_base),
-                getResources().getString(R.string.theme_pink)};
+        List<String> ThemeNameList = new ArrayList<String>();
+        for (int NameResourceId:ThemeNameResourceIds){
+            ThemeNameList.add(getResources().getString(NameResourceId));
+        }
+
+        Themes = ThemeNameList.toArray(new String[ThemeNameResourceIds.length]);
 
         Dialog dialog =
                 new AlertDialog.Builder(getActivity())
@@ -38,8 +53,6 @@ public class ThemeSwitchDialog extends DialogFragment implements DialogInterface
                         .setSingleChoiceItems(Themes,
                                 getUserThemePosition(), this)
                         .create();
-
-
 
         return dialog;
     }
