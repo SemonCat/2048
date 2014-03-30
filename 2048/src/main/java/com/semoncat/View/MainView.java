@@ -33,8 +33,8 @@ public class MainView extends View {
     int boardMiddleX = 0;
     int boardMiddleY = 0;
     Drawable backgroundRectangle;
-    Drawable[] cellRectangle = new Drawable[12];
-    BitmapDrawable[] bitmapCell = new BitmapDrawable[12];
+    Drawable[] cellRectangle;
+    BitmapDrawable[] bitmapCell;
     Drawable settingsIcon;
     Drawable lightUpRectangle;
     Drawable fadeRectangle;
@@ -128,7 +128,7 @@ public class MainView extends View {
         } else {
             paint.setColor(TEXT_BLACK);
         }
-        canvas.drawText("" + value, sX + cellSize / 2, sY + cellSize / 2 - textShiftY, paint);
+        canvas.drawText(String.valueOf(value), sX + cellSize / 2, sY + cellSize / 2 - textShiftY, paint);
     }
 
     public void drawScoreText(Canvas canvas) {
@@ -159,7 +159,7 @@ public class MainView extends View {
         canvas.drawText(getResources().getString(R.string.high_score), sXHighScore + textMiddleHighScore, titleStartYAll, paint);
         paint.setTextSize(bodyTextSize);
         paint.setColor(TEXT_WHITE);
-        canvas.drawText("" + game.highScore, sXHighScore + textMiddleHighScore, bodyStartYAll, paint);
+        canvas.drawText(String.valueOf(game.highScore), sXHighScore + textMiddleHighScore, bodyStartYAll, paint);
 
 
         //Outputting scores box
@@ -170,7 +170,7 @@ public class MainView extends View {
         canvas.drawText(getResources().getString(R.string.score), sXScore + textMiddleScore, titleStartYAll, paint);
         paint.setTextSize(bodyTextSize);
         paint.setColor(TEXT_WHITE);
-        canvas.drawText("" + game.score, sXScore + textMiddleScore, bodyStartYAll, paint);
+        canvas.drawText(String.valueOf(game.score), sXScore + textMiddleScore, bodyStartYAll, paint);
     }
 
     public void drawNewGameButton(Canvas canvas) {
@@ -280,7 +280,11 @@ public class MainView extends View {
                             int dX = (int) ((currentX - previousX) * (cellSize + gridWidth) * (percentDone - 1) * 1.0);
                             int dY = (int) ((currentY - previousY) * (cellSize + gridWidth) * (percentDone - 1) * 1.0);
                             bitmapCell[tempIndex].setBounds(sX + dX, sY + dY, eX + dX, eY + dY);
-                            bitmapCell[tempIndex].draw(canvas);
+                            if (tempIndex<bitmapCell.length){
+                                bitmapCell[tempIndex].draw(canvas);
+                            }else{
+                                bitmapCell[bitmapCell.length-1].draw(canvas);
+                            }
                         }
                         animated = true;
                     }
@@ -288,7 +292,11 @@ public class MainView extends View {
                     //No active animations? Just draw the cell
                     if (!animated) {
                         bitmapCell[index].setBounds(sX, sY, eX, eY);
-                        bitmapCell[index].draw(canvas);
+                        if (index<bitmapCell.length){
+                            bitmapCell[index].draw(canvas);
+                        }else{
+                            bitmapCell[bitmapCell.length-1].draw(canvas);
+                        }
                     }
                 }
             }
@@ -427,18 +435,22 @@ public class MainView extends View {
         game = new MainGame(context, this);
         try {
             backgroundRectangle = resources.getDrawable(R.drawable.background_rectangle);
-            cellRectangle[0] = resources.getDrawable(R.drawable.cell_rectangle);
-            cellRectangle[1] = resources.getDrawable(R.drawable.cell_rectangle_2);
-            cellRectangle[2] = resources.getDrawable(R.drawable.cell_rectangle_4);
-            cellRectangle[3] = resources.getDrawable(R.drawable.cell_rectangle_8);
-            cellRectangle[4] = resources.getDrawable(R.drawable.cell_rectangle_16);
-            cellRectangle[5] = resources.getDrawable(R.drawable.cell_rectangle_32);
-            cellRectangle[6] = resources.getDrawable(R.drawable.cell_rectangle_64);
-            cellRectangle[7] = resources.getDrawable(R.drawable.cell_rectangle_128);
-            cellRectangle[8] = resources.getDrawable(R.drawable.cell_rectangle_256);
-            cellRectangle[9] = resources.getDrawable(R.drawable.cell_rectangle_512);
-            cellRectangle[10] = resources.getDrawable(R.drawable.cell_rectangle_1024);
-            cellRectangle[11] = resources.getDrawable(R.drawable.cell_rectangle_2048);
+            cellRectangle = new Drawable[]{
+                    resources.getDrawable(R.drawable.cell_rectangle),
+                    resources.getDrawable(R.drawable.cell_rectangle_2),
+                    resources.getDrawable(R.drawable.cell_rectangle_4),
+                    resources.getDrawable(R.drawable.cell_rectangle_8),
+                    resources.getDrawable(R.drawable.cell_rectangle_16),
+                    resources.getDrawable(R.drawable.cell_rectangle_32),
+                    resources.getDrawable(R.drawable.cell_rectangle_64),
+                    resources.getDrawable(R.drawable.cell_rectangle_128),
+                    resources.getDrawable(R.drawable.cell_rectangle_256),
+                    resources.getDrawable(R.drawable.cell_rectangle_512),
+                    resources.getDrawable(R.drawable.cell_rectangle_1024),
+                    resources.getDrawable(R.drawable.cell_rectangle_2048),
+                    resources.getDrawable(R.drawable.cell_rectangle_4096),
+                    resources.getDrawable(R.drawable.cell_rectangle_8192)};
+            bitmapCell = new BitmapDrawable[cellRectangle.length];
             settingsIcon = resources.getDrawable(R.drawable.ic_action_refresh);
             lightUpRectangle = resources.getDrawable(R.drawable.light_up_rectangle);
             fadeRectangle = resources.getDrawable(R.drawable.fade_rectangle);
