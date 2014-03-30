@@ -9,4 +9,7 @@
     <string name="game_over">Game Over!</string>
     <string name="game_win">You Win!</string>
 
+    <!-- Drawer -->
+    <string name="drawer_theme">Theme</string>
+
 </resources>
