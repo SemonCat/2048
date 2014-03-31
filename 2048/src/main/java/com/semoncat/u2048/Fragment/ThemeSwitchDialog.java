@@ -22,8 +22,15 @@ import java.util.List;
  */
 public class ThemeSwitchDialog extends DialogFragment implements DialogInterface.OnClickListener{
 
-    public static final String USER_THEME = "user_theme";
+    public enum ThemeType{
+        Theme_Base,
+        Theme_Pink,
+        Theme_Dynasty,
+        Theme_Zodiac,
+        Theme_Periodic
+    }
 
+    public static final String USER_THEME = "user_theme";
 
 
     private String[] Themes;
@@ -61,10 +68,54 @@ public class ThemeSwitchDialog extends DialogFragment implements DialogInterface
         return dialog;
     }
 
+    public static void setUserTheme(Context mContext,int ThemeResourceId){
+        SharedPreferences mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+
+        mSharedPreferences.edit().putString(USER_THEME,
+                getThemeTypeFromThemeResourceId(ThemeResourceId).name())
+                .commit();
+    }
+
     public static int getUserTheme(Context mContext){
         SharedPreferences mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
 
-        return mSharedPreferences.getInt(USER_THEME,ThemeResourceIds[0]);
+        int ThemeResourceId = getThemeResourceIdFromThemeType(ThemeType.valueOf(mSharedPreferences.getString(USER_THEME,"Theme_Base")));
+        return ThemeResourceId;
+    }
+
+    public static ThemeType getThemeTypeFromThemeResourceId(int ThemeResourceId){
+        switch (ThemeResourceId){
+            case R.style.Theme_Base:
+                return ThemeType.Theme_Base;
+            case R.style.Theme_Pink:
+                return ThemeType.Theme_Pink;
+            case R.style.Theme_Dynasty:
+                return ThemeType.Theme_Dynasty;
+            case R.style.Theme_Periodic:
+                return ThemeType.Theme_Periodic;
+            case R.style.Theme_Zodiac:
+                return ThemeType.Theme_Zodiac;
+        }
+
+        return ThemeType.Theme_Base;
+    }
+
+    public static int getThemeResourceIdFromThemeType(ThemeType mThemeType){
+        switch (mThemeType){
+            case Theme_Base:
+                return R.style.Theme_Base;
+            case Theme_Pink:
+                return R.style.Theme_Pink;
+            case Theme_Dynasty:
+                return R.style.Theme_Dynasty;
+            case Theme_Periodic:
+                return R.style.Theme_Periodic;
+            case Theme_Zodiac:
+                return R.style.Theme_Zodiac;
+
+        }
+
+        return R.style.Theme_Base;
     }
 
     private int getUserThemePosition(){
@@ -80,11 +131,7 @@ public class ThemeSwitchDialog extends DialogFragment implements DialogInterface
         return -1;
     }
 
-    public static void setUserTheme(Context mContext,int ThemeResourceId){
-        SharedPreferences mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
 
-        mSharedPreferences.edit().putInt(USER_THEME,ThemeResourceId).commit();
-    }
 
 
     @Override
