@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 public class MainView extends View {
 
     Paint paint = new Paint();
+    Rect bounds = new Rect();
     public MainGame game;
     public boolean hasSaveState = false;
 
@@ -130,7 +132,10 @@ public class MainView extends View {
         } else {
             paint.setColor(TEXT_BLACK);
         }
+
+
         canvas.drawText(valueArray[index], sX + cellSize / 2, sY + cellSize / 2 - textShiftY, paint);
+
     }
 
     public void drawScoreText(Canvas canvas) {
@@ -200,7 +205,10 @@ public class MainView extends View {
         paint.setTextSize(instructionsTextSize);
         paint.setTextAlign(Paint.Align.LEFT);
         int textShiftY = centerText() * 2;
-        canvas.drawText(getResources().getString(R.string.instructions),
+
+        String Instructions = String.format(getResources().getString(R.string.instructions),valueArray[0],valueArray[1]);
+
+        canvas.drawText(Instructions,
                 startingX, endingY - textShiftY + textPaddingSize, paint);
     }
 
