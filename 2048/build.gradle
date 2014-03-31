@@ -4,22 +4,40 @@ android {
     compileSdkVersion 19
     buildToolsVersion '19.0.3'
 
+    signingConfigs {
+
+
+        uConfig {
+            storeFile file("2048.jks")
+            storePassword "zoe80904"
+            keyAlias "semoncat"
+            keyPassword "zoe80904"
+        }
+    }
+
     defaultConfig {
-        minSdkVersion 7
+        minSdkVersion 9
         targetSdkVersion 19
         versionCode 1
         versionName "1.0.0"
     }
     buildTypes {
         release {
+            debuggable false
+            signingConfig signingConfigs.uConfig
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+
+    lintOptions{
+        checkReleaseBuilds false
     }
 }
 
 dependencies {
     compile 'com.android.support:appcompat-v7:+'
     compile 'com.android.support:support-v4:+'
+    compile 'com.google.android.gms:play-services:+'
     compile 'com.readystatesoftware.systembartint:systembartint:+'
 }

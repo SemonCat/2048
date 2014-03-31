@@ -11,12 +11,24 @@ import com.semoncat.u2048.Fragment.ThemeSwitchDialog;
 /**
  * Created by SemonCat on 2014/3/30.
  */
-public class BaseActivity extends ActionBarActivity {
+public class BaseActivity extends BaseGameActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(ThemeSwitchDialog.getUserTheme(this));
         super.onCreate(savedInstanceState);
+
+        beginUserInitiatedSignIn();
+    }
+
+    @Override
+    public void onSignInFailed() {
+
+    }
+
+    @Override
+    public void onSignInSucceeded() {
+
     }
 
     public int getStatusBarHeight() {
