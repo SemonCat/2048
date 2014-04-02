@@ -18,6 +18,7 @@ import java.util.List;
 public class MainGame {
     public interface GameEventListener{
         void OnGameStart();
+        void OnScoreGet(int score);
         void OnScoreChange(long score);
         void OnHighScoreChange(long score);
         void OnGameOver();
@@ -171,6 +172,7 @@ public class MainGame {
                         highScore = Math.max(score, highScore);
 
                         if (mListener!=null) {
+                            mListener.OnScoreGet(merged.getValue());
                             mListener.OnScoreChange(score);
                             mListener.OnHighScoreChange(highScore);
                         }

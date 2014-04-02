@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Games;
+import com.semoncat.u2048.Bean.MainGame;
 import com.semoncat.u2048.Bean.Tile;
 import com.semoncat.u2048.View.GameView;
 import com.semoncat.u2048.View.MainView;
@@ -16,7 +19,7 @@ import com.semoncat.u2048.View.MainView;
 /**
  * Created by SemonCat on 2014/3/29.
  */
-public class MainFragment extends Fragment{
+public class MainFragment extends Fragment implements MainGame.GameEventListener{
 
     MainView view;
     final String WIDTH = "width";
@@ -37,6 +40,8 @@ public class MainFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = new MainView(getActivity());
+
+        view.game.setListener(this);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity());
         view.hasSaveState = settings.getBoolean("save_state", false);
@@ -139,5 +144,95 @@ public class MainFragment extends Fragment{
     }
 
 
+    @Override
+    public void OnGameStart() {
 
+    }
+
+    @Override
+    public void OnScoreGet(int score) {
+        if (getActivity()!=null){
+            MainActivity mainActivity = (MainActivity)getActivity();
+
+            GoogleApiClient apiClient = mainActivity.getApiClient();
+            if (apiClient.isConnected()){
+
+                Games.Leaderboards.submitScore(apiClient,getString(R.string.highblock_id),score);
+
+                switch (score){
+                    case 4:
+
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_4));
+                        break;
+                    case 16:
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_16));
+                        break;
+                    case 32:
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_32));
+                        break;
+                    case 64:
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_64));
+                        break;
+                    case 128:
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_128));
+                        break;
+                    case 256:
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_256));
+                        break;
+                    case 512:
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_512));
+                        break;
+                    case 1024:
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_1024));
+                        break;
+                    case 2048:
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_2048));
+                        break;
+                    case 4096:
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_4096));
+                        break;
+                    case 8192:
+                        Games.Achievements.unlock(apiClient,
+                                getString(R.string.achievement_block_8192));
+                        break;
+                }
+            }
+
+        }
+
+    }
+
+    @Override
+    public void OnScoreChange(long score) {
+
+    }
+
+    @Override
+    public void OnHighScoreChange(long score) {
+        if (getActivity()!=null){
+            MainActivity mainActivity = (MainActivity)getActivity();
+
+            GoogleApiClient apiClient = mainActivity.getApiClient();
+            if (apiClient.isConnected()){
+                Games.Leaderboards.submitScore(apiClient,getString(R.string.highscore_id),score);
+            }
+        }
+
+    }
+
+
+    @Override
+    public void OnGameOver() {
+
+    }
 }

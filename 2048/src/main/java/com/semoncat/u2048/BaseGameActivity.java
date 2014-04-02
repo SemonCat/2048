@@ -78,6 +78,7 @@ public abstract class BaseGameActivity extends ActionBarActivity implements
         if (mHelper == null) {
             mHelper = new GameHelper(this, mRequestedClients);
             mHelper.enableDebugLog(mDebugLog);
+            //mHelper.setConnectOnStart(false);
         }
         return mHelper;
     }
@@ -87,6 +88,7 @@ public abstract class BaseGameActivity extends ActionBarActivity implements
         super.onCreate(b);
         if (mHelper == null) {
             getGameHelper();
+
         }
         mHelper.setup(this);
     }
@@ -95,6 +97,7 @@ public abstract class BaseGameActivity extends ActionBarActivity implements
     protected void onStart() {
         super.onStart();
         mHelper.onStart(this);
+
     }
 
     @Override

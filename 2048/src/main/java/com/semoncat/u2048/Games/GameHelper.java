@@ -948,7 +948,7 @@ public class GameHelper implements GoogleApiClient.ConnectionCallbacks,
                 }
         }
 
-        errorDialog.show();
+        //errorDialog.show();
     }
 
     static Dialog makeSimpleDialog(Activity activity, String text) {

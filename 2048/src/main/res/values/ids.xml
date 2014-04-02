@@ -18,4 +18,19 @@ limitations under the License.
 <resources>
     <string name="app_id">281173396963</string>
     <string name="highscore_id">CgkI45v2uZcIEAIQAQ</string>
+    <string name="highblock_id">CgkI45v2uZcIEAIQDQ</string>
+
+    <string name="achievement_block_4">CgkI45v2uZcIEAIQAg</string>
+    <string name="achievement_block_16">CgkI45v2uZcIEAIQAw</string>
+    <string name="achievement_block_32">CgkI45v2uZcIEAIQBA</string>
+    <string name="achievement_block_64">CgkI45v2uZcIEAIQBQ</string>
+    <string name="achievement_block_128">CgkI45v2uZcIEAIQBg</string>
+    <string name="achievement_block_256">CgkI45v2uZcIEAIQBw</string>
+    <string name="achievement_block_512">CgkI45v2uZcIEAIQCA</string>
+    <string name="achievement_block_1024">CgkI45v2uZcIEAIQCQ</string>
+    <string name="achievement_block_2048">CgkI45v2uZcIEAIQCg</string>
+    <string name="achievement_block_4096">CgkI45v2uZcIEAIQCw</string>
+    <string name="achievement_block_8192">CgkI45v2uZcIEAIQDA</string>
+
+
 </resources>

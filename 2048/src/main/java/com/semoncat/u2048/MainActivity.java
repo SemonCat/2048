@@ -127,10 +127,6 @@ public class MainActivity extends BaseActivity {
 
     }
 
-
-
-
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);

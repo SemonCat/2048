@@ -35,6 +35,11 @@ public class BaseActivity extends BaseGameActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     public void onSignInFailed() {
 
     }
@@ -43,11 +48,5 @@ public class BaseActivity extends BaseGameActivity {
     public void onSignInSucceeded() {
 
 
-        /*
-        if (getApiClient().isConnected()) {
-            // unlock the "Trivial Victory" achievement.
-            Games.Achievements.unlock(getApiClient(), "CgkI45v2uZcIEAIQAg");
-        }
-        */
     }
 }
