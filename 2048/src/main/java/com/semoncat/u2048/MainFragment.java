@@ -164,6 +164,10 @@ public class MainFragment extends Fragment implements MainGame.GameEventListener
 
                         Games.Achievements.unlock(apiClient,
                                 getString(R.string.achievement_block_4));
+
+                        Games.Achievements.increment(apiClient,
+                                getString(R.string.achievement_practice_makes_perfect),
+                                1);
                         break;
                     case 16:
                         Games.Achievements.unlock(apiClient,
