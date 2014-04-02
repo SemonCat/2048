@@ -8,6 +8,7 @@ import com.semoncat.u2048.Bean.Cell;
 import com.semoncat.u2048.Bean.Grid;
 import com.semoncat.u2048.Bean.Tile;
 import com.semoncat.u2048.View.AnimationGrid;
+import com.semoncat.u2048.View.GameView;
 import com.semoncat.u2048.View.MainView;
 
 import java.util.ArrayList;

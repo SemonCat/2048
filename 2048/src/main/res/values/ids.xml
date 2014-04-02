@@ -16,5 +16,6 @@ limitations under the License.
 -->
 
 <resources>
-    <string name="google_play_app_id">281173396963</string>
+    <string name="app_id">281173396963</string>
+    <string name="highscore_id">CgkI45v2uZcIEAIQAQ</string>
 </resources>

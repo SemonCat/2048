@@ -11,6 +11,8 @@
 
     <!-- Drawer -->
     <string name="drawer_theme">主題</string>
+    <string name="drawer_achievements">成就</string>
+    <string name="drawer_Leaderboards">高分榜</string>
 
     <!-- Dialog -->
     <string name="chose_theme">選擇一個主題！</string>
@@ -21,4 +23,8 @@
     <string name="theme_dynasty">朝代</string>
     <string name="theme_zodiac">生肖</string>
     <string name="theme_periodic">元素週期表</string>
+
+    <!-- Google Play Game Service -->
+    <string name="achievements_not_available">請登入以檢視成就。</string>
+    <string name="leaderboards_not_available">請登入已檢視排行榜。</string>
 </resources>

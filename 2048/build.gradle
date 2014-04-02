@@ -13,6 +13,13 @@ android {
             keyAlias "semoncat"
             keyPassword "zoe80904"
         }
+
+        debug {
+            storeFile file("2048.jks")
+            storePassword "zoe80904"
+            keyAlias "semoncat"
+            keyPassword "zoe80904"
+        }
     }
 
     defaultConfig {
@@ -27,6 +34,10 @@ android {
             signingConfig signingConfigs.uConfig
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
 

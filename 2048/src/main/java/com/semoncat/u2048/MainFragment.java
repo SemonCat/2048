@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.semoncat.u2048.Bean.Tile;
+import com.semoncat.u2048.View.GameView;
 import com.semoncat.u2048.View.MainView;
 
 /**
@@ -29,6 +30,8 @@ public class MainFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
+
     }
 
     @Override
@@ -41,7 +44,7 @@ public class MainFragment extends Fragment{
         if (savedInstanceState != null) {
             int[][] saveState = new int[view.game.grid.field.length][view.game.grid.field[0].length];
             for (int xx = 0; xx < saveState.length; xx++) {
-                saveState[xx] = savedInstanceState.getIntArray("" + xx);
+                saveState[xx] = savedInstanceState.getIntArray(String.valueOf(xx));
             }
             for (int xx = 0; xx < saveState.length; xx++) {
                 for (int yy = 0; yy < saveState[0].length; yy++) {
@@ -57,9 +60,9 @@ public class MainFragment extends Fragment{
             view.game.won = savedInstanceState.getBoolean(WON);
             view.game.lose = savedInstanceState.getBoolean(LOSE);
         }
-
         return view;
     }
+
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -75,7 +78,7 @@ public class MainFragment extends Fragment{
             }
         }
         for (int xx = 0; xx < saveState.length; xx++) {
-            savedInstanceState.putIntArray("" + xx, saveState[xx]);
+            savedInstanceState.putIntArray(String.valueOf(xx), saveState[xx]);
         }
         savedInstanceState.putLong(SCORE, view.game.score);
         savedInstanceState.putLong(HIGH_SCORE, view.game.highScore);
@@ -134,4 +137,7 @@ public class MainFragment extends Fragment{
         view.game.won = settings.getBoolean(WON, view.game.won);
         view.game.lose = settings.getBoolean(LOSE, view.game.lose);
     }
+
+
+
 }

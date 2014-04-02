@@ -5,22 +5,24 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
+import com.semoncat.u2048.Bean.MainGame;
 import com.semoncat.u2048.Bean.Tile;
 import com.semoncat.u2048.Input.GestureListener;
-import com.semoncat.u2048.Input.InputListener;
-import com.semoncat.u2048.Bean.MainGame;
 import com.semoncat.u2048.R;
 
 import java.util.ArrayList;
 
-public class MainView extends View {
+/**
+ * Created by SemonCat on 2014/3/31.
+ */
+public class GameView extends View {
 
     Paint paint = new Paint();
     public MainGame game;
@@ -84,18 +86,98 @@ public class MainView extends View {
     public static final float MERGING_ACCELERATION = (float) -0.5;
     public static final float INITIAL_VELOCITY = (1 - MERGING_ACCELERATION) / 4;
 
+    public GameView(Context context) {
+        super(context);
+        init(context);
+    }
+
+    public GameView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+
+    public GameView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context);
+    }
+
+    private void init(Context context){
+        if (isInEditMode()) return;
+
+        Resources resources = context.getResources();
+        //Loading resources
+        /*
+        game = new MainGame(context, this);
+        try {
+
+            valueArray = new String[]{
+                    "2","4","8","16","32","64","128","256",
+                    "512","1024","2048","4096","8192"};
+
+            TypedValue a = new TypedValue();
+            if (context.getTheme()!=null){
+                context.getTheme().resolveAttribute(R.attr.u2048_content_array, a, true);
+
+                try{
+                    valueArray = resources.getStringArray(a.resourceId);
+                }catch (Resources.NotFoundException mNotFoundException){
+
+                }
+            }
+
+
+
+            backgroundRectangle = resources.getDrawable(R.drawable.background_rectangle);
+            cellRectangle = new Drawable[]{
+                    resources.getDrawable(R.drawable.cell_rectangle),
+                    resources.getDrawable(R.drawable.cell_rectangle_2),
+                    resources.getDrawable(R.drawable.cell_rectangle_4),
+                    resources.getDrawable(R.drawable.cell_rectangle_8),
+                    resources.getDrawable(R.drawable.cell_rectangle_16),
+                    resources.getDrawable(R.drawable.cell_rectangle_32),
+                    resources.getDrawable(R.drawable.cell_rectangle_64),
+                    resources.getDrawable(R.drawable.cell_rectangle_128),
+                    resources.getDrawable(R.drawable.cell_rectangle_256),
+                    resources.getDrawable(R.drawable.cell_rectangle_512),
+                    resources.getDrawable(R.drawable.cell_rectangle_1024),
+                    resources.getDrawable(R.drawable.cell_rectangle_2048),
+                    resources.getDrawable(R.drawable.cell_rectangle_4096),
+                    resources.getDrawable(R.drawable.cell_rectangle_8192)};
+            bitmapCell = new BitmapDrawable[cellRectangle.length];
+            settingsIcon = resources.getDrawable(R.drawable.ic_action_refresh);
+            lightUpRectangle = resources.getDrawable(R.drawable.light_up_rectangle);
+            fadeRectangle = resources.getDrawable(R.drawable.fade_rectangle);
+            TEXT_WHITE = resources.getColor(R.color.text_white);
+            TEXT_BLACK = resources.getColor(R.color.text_black);
+            TEXT_BROWN = resources.getColor(R.color.text_brown);
+            this.setBackgroundColor(resources.getColor(R.color.background));
+            Typeface font = Typeface.createFromAsset(resources.getAssets(), "ClearSans-Bold.ttf");
+            paint.setTypeface(font);
+        } catch (AssertionError e) {
+
+
+        }
+        setOnTouchListener(new GestureListener(this));
+        game.newGame();
+        */
+    }
+
+
     @Override
     public void onDraw(Canvas canvas) {
         //Reset the transparency of the screen
 
+        if (isInEditMode()) return;
+
         canvas.drawBitmap(background, 0, 0, paint);
 
-        drawScoreText(canvas);
+        //drawScoreText(canvas);
 
+        /*
         if ((game.won || game.lose) && !game.aGrid.isAnimationActive()) {
             drawNewGameButton(canvas);
         }
-
+        */
         drawCells(canvas);
 
         drawEndGameState(canvas);
@@ -111,9 +193,20 @@ public class MainView extends View {
         }
     }
 
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int MeasureSpec = widthMeasureSpec;
+
+        if (heightMeasureSpec<MeasureSpec)
+            MeasureSpec = heightMeasureSpec;
+        super.onMeasure(MeasureSpec, MeasureSpec);
+    }
+
     @Override
     protected void onSizeChanged(int width, int height, int oldw, int oldh) {
         super.onSizeChanged(width, height, oldw, oldh);
+        if (isInEditMode()) return;
         getLayout(width, height);
         createBackgroundBitmap(width, height);
         createBitmapCells();
@@ -142,8 +235,8 @@ public class MainView extends View {
         paint.setTextSize(bodyTextSize);
         paint.setTextAlign(Paint.Align.CENTER);
 
-        int bodyWidthHighScore = (int) (paint.measureText("" + game.highScore));
-        int bodyWidthScore = (int) (paint.measureText("" + game.score));
+        int bodyWidthHighScore = (int) (paint.measureText(String.valueOf(game.highScore)));
+        int bodyWidthScore = (int) (paint.measureText(String.valueOf(game.score)));
 
         int textWidthHighScore = Math.max(titleWidthHighScore, bodyWidthHighScore) + textPaddingSize * 2;
         int textWidthScore = Math.max(titleWidthScore, bodyWidthScore) + textPaddingSize * 2;
@@ -348,11 +441,11 @@ public class MainView extends View {
     public void createBackgroundBitmap(int width, int height) {
         background = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(background);
-        drawHeader(canvas);
-        drawNewGameButton(canvas);
+        //drawHeader(canvas);
+        //drawNewGameButton(canvas);
         drawBackground(canvas);
         drawBackgroundGrid(canvas);
-        drawInstructions(canvas);
+        //drawInstructions(canvas);
 
     }
 
@@ -364,7 +457,6 @@ public class MainView extends View {
             Bitmap bitmap = Bitmap.createBitmap(cellSize, cellSize, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
             drawDrawable(canvas, cellRectangle[xx], 0, 0, cellSize, cellSize);
-            //drawCellText(canvas, (int) Math.pow(2, xx), 0, 0);
             if (xx!=0){
                 drawCellText(canvas, xx-1, 0, 0);
             }
@@ -388,12 +480,14 @@ public class MainView extends View {
     }
 
     public void getLayout(int width, int height) {
-        cellSize = Math.min(width / (game.numSquaresX + 1), height / (game.numSquaresY + 3));
-        gridWidth = cellSize / 7;
         screenMiddleX = width / 2;
         screenMiddleY = height / 2;
         boardMiddleX = screenMiddleX;
-        boardMiddleY = screenMiddleY + cellSize / 2;
+        boardMiddleY = screenMiddleY;
+
+        cellSize = Math.min((int)(width / (game.numSquaresX+0.70)),(int) (height / (game.numSquaresY+0.70)));
+        gridWidth = cellSize / 7;
+
         iconSize = cellSize / 2;
 
         paint.setTextAlign(Paint.Align.CENTER);
@@ -438,66 +532,6 @@ public class MainView extends View {
 
     public int centerText() {
         return (int) ((paint.descent() + paint.ascent()) / 2);
-    }
-
-    public MainView(Context context) {
-        super(context);
-        Resources resources = context.getResources();
-        //Loading resources
-
-        game = new MainGame(context, this);
-        try {
-
-            valueArray = new String[]{
-                    "2","4","8","16","32","64","128","256",
-                    "512","1024","2048","4096","8192"};
-
-            TypedValue a = new TypedValue();
-            if (context.getTheme()!=null){
-                context.getTheme().resolveAttribute(R.attr.u2048_content_array, a, true);
-
-                try{
-                    valueArray = resources.getStringArray(a.resourceId);
-                }catch (Resources.NotFoundException mNotFoundException){
-
-                }
-            }
-
-
-
-            backgroundRectangle = resources.getDrawable(R.drawable.background_rectangle);
-            cellRectangle = new Drawable[]{
-                    resources.getDrawable(R.drawable.cell_rectangle),
-                    resources.getDrawable(R.drawable.cell_rectangle_2),
-                    resources.getDrawable(R.drawable.cell_rectangle_4),
-                    resources.getDrawable(R.drawable.cell_rectangle_8),
-                    resources.getDrawable(R.drawable.cell_rectangle_16),
-                    resources.getDrawable(R.drawable.cell_rectangle_32),
-                    resources.getDrawable(R.drawable.cell_rectangle_64),
-                    resources.getDrawable(R.drawable.cell_rectangle_128),
-                    resources.getDrawable(R.drawable.cell_rectangle_256),
-                    resources.getDrawable(R.drawable.cell_rectangle_512),
-                    resources.getDrawable(R.drawable.cell_rectangle_1024),
-                    resources.getDrawable(R.drawable.cell_rectangle_2048),
-                    resources.getDrawable(R.drawable.cell_rectangle_4096),
-                    resources.getDrawable(R.drawable.cell_rectangle_8192)};
-            bitmapCell = new BitmapDrawable[cellRectangle.length];
-            settingsIcon = resources.getDrawable(R.drawable.ic_action_refresh);
-            lightUpRectangle = resources.getDrawable(R.drawable.light_up_rectangle);
-            fadeRectangle = resources.getDrawable(R.drawable.fade_rectangle);
-            TEXT_WHITE = resources.getColor(R.color.text_white);
-            TEXT_BLACK = resources.getColor(R.color.text_black);
-            TEXT_BROWN = resources.getColor(R.color.text_brown);
-            this.setBackgroundColor(resources.getColor(R.color.background));
-            Typeface font = Typeface.createFromAsset(resources.getAssets(), "ClearSans-Bold.ttf");
-            paint.setTypeface(font);
-        } catch (AssertionError e) {
-
-
-        }
-        setOnTouchListener(new GestureListener(this));
-        game.newGame();
-
     }
 
 }

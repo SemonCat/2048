@@ -4,6 +4,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.google.android.gms.games.Game;
+import com.semoncat.u2048.View.GameView;
 import com.semoncat.u2048.View.MainView;
 
 /**

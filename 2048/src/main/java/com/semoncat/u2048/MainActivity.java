@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.google.android.gms.games.Games;
+import com.google.android.gms.games.achievement.Achievements;
+import com.google.android.gms.games.leaderboard.Leaderboards;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.semoncat.u2048.Fragment.ThemeSwitchDialog;
 import com.semoncat.u2048.R;
@@ -19,6 +22,9 @@ public class MainActivity extends BaseActivity {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
+
+    // request codes we use when invoking an external activity
+    final int RC_RESOLVE = 5000, RC_UNUSED = 5001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +99,37 @@ public class MainActivity extends BaseActivity {
         new ThemeSwitchDialog().show(getSupportFragmentManager(),null);
 
     }
+
+    public void Achievements(View mView){
+
+        mDrawerLayout.closeDrawers();
+
+
+        if (isSignedIn()) {
+            startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()),
+                    RC_UNUSED);
+        } else {
+            showToast(getString(R.string.achievements_not_available));
+        }
+    }
+
+    public void Leaderboards(View mView){
+
+        mDrawerLayout.closeDrawers();
+
+        if (isSignedIn()) {
+            startActivityForResult(Games.Leaderboards.getAllLeaderboardsIntent(getApiClient()),
+                    RC_UNUSED);
+        } else {
+            showToast(getString(R.string.leaderboards_not_available));
+        }
+
+
+    }
+
+
+
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
