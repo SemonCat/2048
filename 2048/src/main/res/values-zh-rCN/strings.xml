@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">2048</string>
+    <string name="titleHeader">2048</string>
+    <string name="high_score">最高分数</string>
+    <string name="score">分数</string>
+    <string name="instructions">滑动你的手指！ %1$s + %1$s = %2$s。</string>
+    <string name="game_over">游戏结束：（</string>
+    <string name="game_win">胜利！</string>
+
+    <!-- Drawer -->
+    <string name="drawer_theme">主题</string>
+    <string name="drawer_achievements">成就</string>
+    <string name="drawer_Leaderboards">高分榜</string>
+
+    <!-- Dialog -->
+    <string name="chose_theme">选择一个主题！</string>
+
+    <!-- Theme -->
+    <string name="theme_base">预设</string>
+    <string name="theme_pink">粉红</string>
+    <string name="theme_dynasty">朝代</string>
+    <string name="theme_zodiac">生肖</string>
+    <string name="theme_periodic">元素周期表</string>
+
+    <!-- Google Play Game Service -->
+    <string name="achievements_not_available">请登入以检视成就。</string>
+    <string name="leaderboards_not_available">请登入已检视排行榜。</string>
+</resources>
