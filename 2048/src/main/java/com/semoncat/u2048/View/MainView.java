@@ -142,8 +142,11 @@ public class MainView extends View {
         paint.setTextSize(bodyTextSize);
         paint.setTextAlign(Paint.Align.CENTER);
 
-        int bodyWidthHighScore = (int) (paint.measureText("" + game.highScore));
-        int bodyWidthScore = (int) (paint.measureText("" + game.score));
+        //int bodyWidthHighScore = (int) (paint.measureText(String.valueOf(game.highScore)));
+        //int bodyWidthScore = (int) (paint.measureText(String.valueOf(game.score)));
+
+        int bodyWidthHighScore = (int) (paint.measureText("00000"));
+        int bodyWidthScore = (int) (paint.measureText("00000"));
 
         int textWidthHighScore = Math.max(titleWidthHighScore, bodyWidthHighScore) + textPaddingSize * 2;
         int textWidthScore = Math.max(titleWidthScore, bodyWidthScore) + textPaddingSize * 2;
