@@ -6,7 +6,6 @@ android {
 
     signingConfigs {
 
-
         uConfig {
             storeFile file("2048.jks")
             storePassword "zoe80904"
@@ -14,19 +13,13 @@ android {
             keyPassword "zoe80904"
         }
 
-        debug {
-            storeFile file("2048.jks")
-            storePassword "zoe80904"
-            keyAlias "semoncat"
-            keyPassword "zoe80904"
-        }
     }
 
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 19
-        versionCode 4
-        versionName "1.1.2"
+        versionCode 5
+        versionName "1.1.3"
     }
     buildTypes {
         release {
@@ -36,9 +29,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
 
+
         debug {
-            signingConfig signingConfigs.debug
+            debuggable true
+            signingConfig signingConfigs.uConfig
         }
+
+
     }
 
     lintOptions{
