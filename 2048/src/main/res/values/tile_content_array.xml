@@ -23,14 +23,14 @@
         <item>秦</item>
         <item>漢</item>
         <item>唐</item>
+        <item>五代</item>
+        <item>十國</item>
         <item>宋</item>
         <item>元</item>
         <item>明</item>
         <item>清</item>
         <item>ROC</item>
         <item>PRC</item>
-        <item>PRC2</item>
-        <item>PRC3</item>
     </string-array>
 
     <string-array name="zodiac">
