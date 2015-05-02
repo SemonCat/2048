@@ -4,14 +4,7 @@ android {
     compileSdkVersion 19
     buildToolsVersion '19.0.3'
 
-    signingConfigs {
-
-        uConfig {
-            storeFile file("2048.jks")
-            storePassword "zoe80904"
-            keyAlias "semoncat"
-            keyPassword "zoe80904"
-        }
+    
 
     }
 
